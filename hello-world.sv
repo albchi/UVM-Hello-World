@@ -4,10 +4,10 @@ program main();
 
   initial begin
 
-		`uvm_info("main_phase", $sformatf("%d Hello World", $time()), UVM_HIGH); 
-		#12; 
-		`uvm_info("main_phase", $sformatf("%d Halfway Through  World", $time()), UVM_HIGH);
-	    #34;
+	`uvm_info("main_phase", $sformatf("%d Hello World", $time()), UVM_HIGH); 
+	#12; 
+	`uvm_info("main_phase", $sformatf("%d Halfway Through  World", $time()), UVM_HIGH);
+	#34;
     	`uvm_info("main_phase", $sformatf("%d Goodbye World", $time()), UVM_HIGH);
     
   end // initial 
