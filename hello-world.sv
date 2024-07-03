@@ -1,58 +1,60 @@
 /*
 
-  A simple UVM "Hello World" program.
-
-   
+  A fairly simple UVM "Hello World" program.
+  
+  At the start of simulation, there are no modules, so the testbench phase starts,
+  which is "program main". "run_test("TestHelloWorld")" looks for class TestHelloWorld
+  and begins to execute it. The 
 */
+
 import uvm_pkg::*;
 
 program main();
 
-  initial begin
+	initial begin
 
-	run_test("TestHelloWorld"); //     uvm_top.run_test();
+		run_test("TestHelloWorld"); //     uvm_top.run_test();
     
-  end // initial 
+	end // initial 
 
 endprogram
 
 class TestHelloWorld extends uvm_test;
   
-    `uvm_component_utils(TestHelloWorld)
+	`uvm_component_utils(TestHelloWorld)
 	
-  function new(input string name, input uvm_component parent);
-    	super.new(name, parent);
-    endfunction : new
+	function new(input string name, input uvm_component parent);
+    		super.new(name, parent);
+	endfunction : new
 
   
-    virtual task main_phase( input uvm_phase phase);
-		
+	virtual task main_phase( input uvm_phase phase);	
         
-        uvm_objection   objection;
+	        uvm_objection   objection;
+		
 		super.main_phase(phase);
-        /*
-		`uvm_info("Main", $sformatf("%d Hello World", $time()), UVM_LOW);
-	    #12;
-		`uvm_info("Main", $sformatf("%d Halfway Through  World", $time()), UVM_MEDIUM);
-	    #34;
-		`uvm_info("Main", $sformatf("%d Goodbye World", $time()), UVM_HIGH);
-
-		objection = phase.get_objection();
-		objection.set_drain_time(this, 1us);
-        */ 
+		
+		       	 /*
+			`uvm_info("Main", $sformatf("%d Hello World", $time()), UVM_LOW);
+		    	#12;
+			`uvm_info("Main", $sformatf("%d Halfway Through  World", $time()), UVM_MEDIUM);
+		    	#34;
+			`uvm_info("Main", $sformatf("%d Goodbye World", $time()), UVM_HIGH);
+			objection = phase.get_objection();
+			objection.set_drain_time(this, 1us);
+			*/ 
       
-  endtask : main_phase
+	endtask : main_phase
   
 	virtual task run_phase( input uvm_phase phase);
 		
-        `uvm_info("run_phase()", $sformatf("%d Hello World", $time()), UVM_LOW);
+        	`uvm_info("run_phase()", $sformatf("%d Hello World", $time()), UVM_LOW);
 		#12;
 		`uvm_info("run_phase()", $sformatf("%d Halfway Through  World", $time()), UVM_MEDIUM);
-	    #34;
+	    	#34;
 		`uvm_info("run_phase()", $sformatf("%d Goodbye World", $time()), UVM_HIGH);
 
-        
-  endtask : run_phase
+	endtask : run_phase
 endclass
 
 
