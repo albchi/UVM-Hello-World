@@ -1,3 +1,5 @@
+// COMPILE VCS : -ntb_opts uvm-1.1d -sverilog
+// RUN : +UVM_VERBOSITY=UVM_HIGH
 import uvm_pkg::*;
 
 program main();
